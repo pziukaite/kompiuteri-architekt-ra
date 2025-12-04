@@ -40,3 +40,11 @@ Trumpas darbo pristatymas, tikslas
 ### 3.15 Spartinančioji atmintis (16 klausimas)
 ### 3.16 Taikymo sritys (17 klausimas)
 ### 3.17 Programinė įranga ir programavimo įrankiai (18 klausimas)
+
+## 4. Lyginimas
+### 4.1 Panašumai
+### 4.2 Skirtumai
+
+## 5. Išvados
+
+## 6. Naudoti šaltiniai
