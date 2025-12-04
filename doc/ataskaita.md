@@ -5,7 +5,9 @@ Trumpas darbo pristatymas, tikslas
 
 ## 2. AN/UYK-44 architektūra
 ### 2.1 Bazinės ir fizinės savybės (2 klausimas)
+Tai yra 16 bitų minikompiuteris, buvo sukurtas naudojant integrinius laidynus (LSI/TTL), o ne lempas kaip anksčiau. Atminčiai naudojama magnetinės šerdys (lėtesnis ciklas) ir puslaininkai (greitesnis ciklas). Fiziškai ši architektūra yra pritaikyta standartiniam 19 colių rack'ui(???), tačiau yra lengvesnis ir naudoja mažiau energijos. Dėl to puikiai ttinka naudojimui laivuose (taip ir buvo dažniausiai naudojamas) dėl svorio ir galios kompromiso.
 ### 2.2 Architektūros tipas (3 klausimas)
+AN/UYK-44 yra registrinė CISC tipo architektūra. Programos pagrinde dirba su 16 bendrosios pakirties registrų rinkiniu, o atmintis pasiekiama per puslapių adresų reegistrus, kurie veikia kaip baziniai adresai. turi sdu atskirus registrų rinkinius naudojamus užduočių (task) arba vykdomajam (executive) režimuose. Tai yra registrų architektūra su stipria atminties žemėlapiavimo ir apsaugos posisteme.
 ### 2.3 Adresų skaičius (4 klasuimas)
 ### 2.4 Registrai (5 klausimas)
 ### 2.5 Požymių bitai (6 klausimas)
