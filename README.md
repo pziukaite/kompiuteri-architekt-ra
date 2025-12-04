@@ -1,2 +1,2 @@
-# kompiuteri-architekt-ra
+# komparch
 Dviejų architektūrų lyginimas.  AN/UYK-44 vs. Intel i960
