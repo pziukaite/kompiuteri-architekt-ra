@@ -43,14 +43,24 @@ AN/UYK-44 atsirado, kai laivyno programinė ekosistema buvo gerai išvystyta, to
 
 ## 3. Intel i960 architektūra
 ### 3.1 Bazinės ir fizinės savybės (2 klausimas)
+Intel i960 yra vieno lusto CMOS VLSI (didelio integracijos laipsnio) procesorius. i960CA ir i960MX yra pilni 32 bitų RISC procesoriai viename luste. Jie yra skirti įterptoms sistemoms ir avionikai, todėl yra optimizuoti naudoti gan mažai energijos (lyginant su to meto bendros paskirties CPU). Taigi, tai yra tipinė VLSI integrinių grandynų architektūra.
 ### 3.2 Architektūros tipas (3 klausimas)
+Tai yra registrinė „load/store" RISC architektūra. Komandos dirba su registrų failu, o prie atminties kreipiamasi tik specialiomis „load/store" tipo instrukcijomis. Architektūra nenaudoja klasikinio akumuliatoriaus kaip vienintelio rezultatų registro - tai nėra nei akumuliatorinė, nei atmintis į atmintį architektūra. Tačiau architektūros branduolys yra artimas Berklio RISC modeliui - daug registrų, registrų langai procedūrų iškvietimams ir paprasti adresavimo režimai.
 ### 3.3 Adresų skaičius (4 klasuimas)
+Instrukcijų lygmuo yra artimiausias 2-3 adresų registrinei mašinai. Aritmetinės ir loginės instrukcijos naudoja du šaltinius ir vieną paskirties registrą (pvz. addi r1, r2, r3 - du operandai + vienas rezultato registras). Yra formų, kur vienas iš operandų yra „immediate", arba rezultatas rašomas atgal į tą patį registrą, dėl to dalis komandų elgiasi kaip dviejų adresų instrukcijos. Taigi, adresai į atmintį instrukcijose dažniausiai reiškia tik vieną atminties operandą, kitas operandas ir rezultatas - registruose.
 ### 3.4 Registrai (5 klausimas)
+i960 branduolys turi 32 bendrosios paskirties 32 bitų registrus, suskirstytus į 16 globalių (g0-g15) ir 16 lokalių(r0-r15) esamam procedūros „langui".
+Superskaliariniame i960CA yra ir „register cache", kur yra laikomi keli paskutinių procedūrų lokalių registrų rinkiniai - iškvietimas/grįžimas praktiškai tik perjungia langą, o ne kopijuoja duomenis. Taip pat, yra specialios pasirties registrai - instrukcijų rodyklė (IP), procesų valdymo (PC), aritmetikos valdymo (AC), įvairūs valdymo ir būsenos registrai ir kt.. Išplėstoje architektūroje papildomai yra registrai, kurie yra susiję su objektų ir puslapių adresavimu, apsauga.
 ### 3.5 Požymių bitai (6 klausimas)
+Pagrindiniai požymaii yra laikomi AC („Arithmetic Controls") registre. Čia yra neigiamumo, nulio, pernešimo, papildymo ir kiti aritmetikos ar lyginimos rezultatus atspindintys bitai. Šie požymiai yra naudojami sąlyginiams šuoliams ir testavimo instrukcijoms. 
 ### 3.6 Duomenų plotis (7 klausimas)
-### 3.7 Atminties išdėstymas ir adresų plotis (8 klausimas)
+Bazinė architektūra yra 32 bitų. Registrai ir mašininis kodas - 32 bitai,  adresų erdvė - plokščia 32 bit7. Išplėstinėje architektūroje (ją realizuoja i960MX) atminties posistemė yra 32 bitų - prie kiekvieno 32 bitų žodžio pridedamas žymės („tag") bitas, kuris yra naudojamas apsaugai ir objektų tipams atskirti.
+### 3.7 Atminties išdėstymas ir adresų erdvė (8 klausimas)
+i960CA turi plokščią 32 bitų adresų erdvę be segmentavimo, tačiau su baitų, žodžių ir žodžių eilės adresavimu, vidine instrukcijų talpykla. Išplėstinėje architektūroje adresavimas tampa objektinis - logišką adresą sudaro objekto  identifikatorius ir poslinkis, o MMU verčia juos į fizinę atmintį, naudodama lenteles ir 33-iajį bitą apsaugai. Taigi, MMU modelis rodo, kad i960 MMU turi aiškiai atskirtas lenteles puslapiams, objektams, valdo prieigos teises ir generuoja apsaugos klaidas. Dėl to atmintes erdvė yra gerai suskaidyta į puslapius ir saugomus objektus, o programavimo lygmeniu OS gali pateikti vientisą virtualią erdvę.
 ### 3.8 Virtuali atmintis (9 klausimas)
+„Protected" ir dar labiau „extended" i960 architektūros lygiai turi pilną virtualiosios atminties palaikymą, kuris yra realizuojamas MMU su puslapiavimo ir objektine apsauga. „extended" architektūroje kiekvienas žodis turi žymės bitą.
 ### 3.9 Komandų sistema (10 klausimas)
+i960 ISA - yra RISC tipo, fiksuoto 32 bitų ilgio instrukcijos, suskirstytos į kelias klases - duomenų perkėlimo („load/store/move"), aritmetikos (addi, subo, muli), loginės (and, or, xor), bitų ir bitų laukų, baitų operacijų, palyginimo (cmpi, cmpo, cmpdeci), šakų (b, bx, bal, „compare and branch"), procedūrų valdymo (call, callx, ret), sisteminių (sysctl1), atominių ir derinimo instrukcijų. 
 ### 3.10 Adresavimo būdai (11 klausimas)
 ### 3.11 I/O galimybės (12 klausimas)
 ### 3.12 Pertraukimai (13 klausimas)
@@ -67,3 +77,4 @@ AN/UYK-44 atsirado, kai laivyno programinė ekosistema buvo gerai išvystyta, to
 ## 5. Išvados
 
 ## 6. Naudoti šaltiniai
+
