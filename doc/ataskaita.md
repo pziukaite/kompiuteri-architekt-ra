@@ -22,7 +22,9 @@ AN/UYK-44 naudoja „paged memory system" modelį. Užduočių režime programa 
 Ši sistema nėra sukurta kaip virtualios atminties mašinia, tačiau jos puslapių žemėlapiavimo mechanizmas elgiasi panašiai kaip paprasta virtualioji atmintis apsauginiu aspektu. Loginiai 16 bitų adresai yra verčiami į fizinius per puslapių adresų registrus, o vykdomasis režimas gali juos perrašyti, taip perjungia, kokias atminties sritis mato konkreti užduotis. Taip skirtingi procesai gali būti izoliuoti, o I/O aparatūra gali dirbti su savo buferiais, nematydama kitų duomenų. trūksta tik automatinio puslapių iškėlimo į diską ir atgal, nes viskas turi tilpti pagrindinėje atmintyje (tai yra realaus laiko kontroleris).
 ### 2.9 Komandų sistema ISA (10 klausimas)
 Architektūros komandų sistema yra programuota CISC tipo ISA su dvejais pogrupiais - nepriviligijuotomis ir privilegijuotomis instrukcijomis. 
+
 Nepriviligijuotos instrukcijos apima sveikųjų skaičių aritmetiką (tokias kaip sudėtis, atimtis, daugyba, dalyba), logines opracija (tokias kaip AND, OR, XOR), bitų poslinkius ar rotacijas, sąlyginius ir besąlyginius šuolius , registrų ir atminties užkrovimą bei saugojimą. 
+
 Privilegijuotos instrukcijos valdo puslapių adresų registrus, būsenos registrus, laiko skaitiklį, kontroliuoja I/O grandines, paleidžia diagnostines procedūras. Instrukcijų formatai yra grynai registriniai, registras-atmintis - kitaip nei nepriviligijuotose instrukcijose. 
 ### 2.10 Adresavimo būdai (11 klausimas)
 Pagrindinis naudojamas adresavimo būdas - puslapio numeris + poslinkis, kur puslapio numeris per puslapi7 registrus „išverčiamas" į fizinį bazinį adresą. Instrukcijos gali naudoti registrų adresavimą, netiesioginį adresavimą per žodį atmintyje, santykinį adresavimą šuoliams (nuo P registro) ir specialų adresavimą I/O komandose, kai adresas interpretuojamas kaip nuoroda į I/O kanalų duomenų struktūras. 
@@ -62,16 +64,25 @@ i960CA turi plokščią 32 bitų adresų erdvę be segmentavimo, tačiau su bait
 ### 3.9 Komandų sistema (10 klausimas)
 i960 ISA - yra RISC tipo, fiksuoto 32 bitų ilgio instrukcijos, suskirstytos į kelias klases - duomenų perkėlimo („load/store/move"), aritmetikos (addi, subo, muli), loginės (and, or, xor), bitų ir bitų laukų, baitų operacijų, palyginimo (cmpi, cmpo, cmpdeci), šakų (b, bx, bal, „compare and branch"), procedūrų valdymo (call, callx, ret), sisteminių (sysctl1), atominių ir derinimo instrukcijų. 
 ### 3.10 Adresavimo būdai (11 klausimas)
+Pagal oficialų vadovą i960 palaiko kelis klasikinius adresavimo režimus - absoliutų (tiesioginis adresas), registro netiesioginį, indeksuotą su poslinkiu (registras + literalo poslinkis), IP su poslinkiu (instrukcijos rodyklės santykinis adresavimas) ir įvairias „immediate" formas. Bitų ir jų laukų instrukcijos leidžia adresuoti konkrečius bitus/bitų laukus žodyje. 
 ### 3.11 I/O galimybės (12 klausimas)
+Ši architektūra yra orientuota į atmintimi žemėlapiuotą I/O - išorinių įrenginių registrai tiesiog įdedami į adresų erdvę ir yra pasiekiami per įprastas „load/store" instrukcijas. i960 turi integruotus pertraukimų valdiklius, laikmačius.
 ### 3.12 Pertraukimai (13 klausimas)
+Yra gan plati pertraukimų sistema. Pvz. 80960MC varianto duomenyse minima iki 256 pertraukimų vektorių ir iki 32 prioriteto lygių, su vektorine pertraukų lentele ir greitu konteksto perjungimu.
 ### 3.13 Duomenų tipai aparatūriniame lygyje (14 klausimas)
+Pagal i960 CA/CF vadovą aparatūrinė įranga palaiko sveikuosius skaičius, bitus ir bitų laukus, baitų ir žodžių operacija. Branduolinėje architektūroje fiksuoto kablelio aritmetika yra pagrindinė. „Extended" architektūroje atsiranda naujas tipas - objekto/rodyklės žodis su „tag" bitu, kuris atskiria duomenis nuo apsaugotų nuorodų.
 ### 3.14 Greitaveika ir kainos/našumo santykis (15 klausimas)
+i960CA yra pirmasis vieno lusto superskalarus RISC procesorius su 33MHz dažniu ir iki maždaug 66 MIPS našumu, nes vienu metu gali vyskdyti iki dviejų nepriklausomų instrukcijų per vieną ciklą. Taip pat, pasiūlė praktinį superskalarumą įterptoms sistemoms už gan nedidelę kainą (lyginant su to meto dideliais RISC procesoriais).
 ### 3.15 Spartinančioji atmintis (16 klausimas)
+Šio procesoriaus superskalarūs variantai tui „on-chip" spartinančią atmintį. i960CA turi vieną KB instrukcijų „cache", o i960CF - 4 KB instrukcijų ir vieną KB duomenų „cache", dvipusio asociatyvumo, organizuotą žodžių eilėmis, optimizuotą nuosekliam instrukcijų srautui. 
 ### 3.16 Taikymo sritys (17 klausimas)
+i960 šeima buvo plačiai naudota įterptose sistemose - spausdintuvuose, tinklo valdikliuose, terminaluose, modemų įrangoje, tačiau svarbiausios taikymo sritys - anvionikos ir karinės sistemos.
 ### 3.17 Programinė įranga ir programavimo įrankiai (18 klausimas)
+Šiai architektūrai buvo sukurta nemažai programinės įrangos ir kūrimo įrankių. Buvo siūlyti C ir Ada kompiliatoriai, asembleriai, derintuvai ir profiliuotojai. 
 
 ## 4. Lyginimas
 ### 4.1 Panašumai
+
 ### 4.2 Skirtumai
 
 ## 5. Išvados
