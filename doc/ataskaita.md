@@ -82,10 +82,31 @@ i960 šeima buvo plačiai naudota įterptose sistemose - spausdintuvuose, tinklo
 
 ## 4. Lyginimas
 ### 4.1 Panašumai
+Ta pati integrinių grandynų era - jos yra realizuotos kaip VLSI/LSI lustao ar modulinės plokštės su puslaidininke atmintimi, be senos elementinės bazės.
+
+Registrinės architektūros  - programos dirba per registrus, o atmintis pasiekiama specialiomis komandomis.
+
+Atiminties valdymo ir apsaugos aparatūrinė sistema - aparatūrinė įranga suskirsto adresų erdvę (puslapiai/objektai), tikrinamos prieigos teisės, leidžia OS izoliuoti skirtingas užduotis.
+
+Pertraukimai - abi buvo kurtos realaus laiko sistemoms (gynuba, avionika). Dėl to abi turi išvystytą pertraukimų sistemą, greitą kontekto perjugimą, atskirus režimus.
 
 ### 4.2 Skirtumai
+CISC minikompiuteris AN/UYK-44 turi „istorinius" instrukcijų formatus ir yra orientuota į laivyno taktikos sistemas, o RISC superskalaras Intel i960 turi fiksuoto ilgio instrukcijas, „load/store" modelį, tai yra akademinių RISC idėjų ir pramonės standartų mišinys.
+
+UYK-44 žodis yra 16 bitų, o i960 - pilna 32 bitų architektūra, „extended" versija turi dar ir 33-iąjį „tag" bitą.
+
+Pirmoji architektūra yra puslapiuotas 16 adresų modelis, tuo tarpu i960 turi pilną MMU su puslapiavimu/objektais.
+
+i960 yra kur kas stipresnis iš našumo pusės (apie 66 MIPS), o UYK-44 tik 1 MIPS.
+
+UYK-44 yra stipriai orientuota į karinių sistemų I/O, o i960 - universalesnis, įterptinis CPU, dažnai su žemėlapiuojamu I/O.
+
+UYK-44 paskirtis yra gan siauria - daugiausia naudojama JAV laivyne ir gynyboje. i960 irgi yra naudojamas karinėje ir avionikos technikoje, tačiau be to dar plačiai naudojamas komercinėse įterptinėse sistemose (pvz. spausdintuvai).
 
 ## 5. Išvados
+Taigi, abi architektūros atspindi skirtingas eras - UYK-44 atstovauja senesnės kartos karinio minikompiuterio logiką su 16 bitų CISC, o i960 - šiuolaikinį, 32 bitų RISC. 
+
+Taip pat, abi architejtūros yra projektuotos konkrečioms sistemoms, tačiau skirtingai realizuotos. 
 
 ## 6. Naudoti šaltiniai
 
